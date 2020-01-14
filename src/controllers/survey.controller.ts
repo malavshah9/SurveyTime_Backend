@@ -1,4 +1,4 @@
-import { Controller, Get, Header, Post, Body } from '@nestjs/common';
+import { Controller, Get, Header, Post, Body, UsePipes, Param } from '@nestjs/common';
 import { SurveyService } from '../services/servey.service';
 import { SurveyDTO } from 'src/dto/survey.dto';
 @Controller('survey')
@@ -14,10 +14,14 @@ export class SurveyController {
     }
     return JSON.stringify(custom_header);
   }
-  @Post()
+  @Post(':registrationNumber')
   @Header('Content-type','application/json')
-  setSurvey(@Body() setQuestionsDto:SurveyDTO): boolean {
-      console.log(setQuestionsDto);
-      return true;
+  setSurvey(@Body() setQuestionsDto: SurveyDTO,@Param('registrationNumber') registrationNumber:number): boolean {
+      return this.surveyService.setSurvey(registrationNumber,setQuestionsDto);
+  }
+  @Get(':registrationNumber')
+  @Header('Content-type','application/json')
+  getSurvey(@Param('registrationNumber') registrationNumber:number): boolean {
+      return this.surveyService.getSurvey(registrationNumber);
   }
 }

@@ -1,5 +1,4 @@
-import { IsNotEmpty,ArrayUnique,IsArray,ArrayNotEmpty } from 'class-validator';
-import { QuestionDTO } from './question.dto';
+import { IsNotEmpty,ArrayUnique,IsArray,ArrayNotEmpty} from 'class-validator';
 export class  SurveyDTO{
   @IsNotEmpty()
   @ArrayUnique()

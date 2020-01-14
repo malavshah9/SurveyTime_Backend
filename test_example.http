@@ -6,9 +6,11 @@ GET http://localhost:3000/survey
 
 ###
 
-POST http://localhost:3000/survey
-Content-Type: "application/json"
+POST http://localhost:3000/survey/9314
+Content-Type: application/json
 
 {
-   "name":"malav shah"
+   "kdks":"akalsd",
+   "asj":"slkdasldkl",
+   "questions":["Hello","Malav","Shah","Demo","Follow"]
 }
