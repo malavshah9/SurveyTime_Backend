@@ -2,7 +2,7 @@ import { Controller, Get, Header, Post, Body, UsePipes, Param } from '@nestjs/co
 import { SurveyService } from '../services/servey.service';
 import { SurveyDTO } from '../dto/survey.dto';
 import { ResponseDTO } from '../dto/responses.dto';
-import { QuestionDTO } from 'src/dto/question.dto';
+import { QuestionDTO } from '../dto/question.dto';
 import { isUndefined } from 'util';
 import { ArrayValidationPipe } from '../utilities/ArrayValidationPipe';
 import { Logger } from '@nestjs/common';
