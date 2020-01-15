@@ -16,6 +16,7 @@ async function bootstrap() {
     skipNullProperties:true
   }));
   app.useLogger(logger);
+  app.enableCors();
   await app.listen(3000);
 }
 bootstrap();
