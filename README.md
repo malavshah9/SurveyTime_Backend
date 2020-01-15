@@ -9,9 +9,15 @@ This is backend service made with Node.js using the [Nest](https://github.com/ne
 $ npm install
 ```
 
+## Deployement & Documentations
+
+- On Heroku - [Click here to open app](https://survey-time.herokuapp.com/)
+
+- [Api Documentation with testing interface](https://survey-time.herokuapp.com/api/)
+
 ## Endpoints Defined
 
-1. 
+
 ### Request
 
 `GET /survey/`
@@ -27,8 +33,8 @@ registration:"4343"
 ### Description
 Used to register for the survey. You will get the registration number.
 
+___
 
-2. 
 ### Request
 
 `POST /survey/:registrationNumber`
@@ -46,9 +52,10 @@ curl -i -H 'Content-type: application/json' http://localhost:3000/survey/3453
 true or false
 
 ### Description
-Used to store the "questions" for the given survey number. Reponses true if successfully stored, false if wrong survey number or wrong post body
+Used to store the "questions" for the given survey number. Reponses true if successfully stored, false if wrong survey number or wrong post body.
 
-3. 
+___
+
 ### Request
 
 `POST /survey/response/:registrationNumber`
@@ -68,7 +75,8 @@ true or false
 ### Description
 Used to store the "answers" for the given survey number. Reponses true if successfully stored, false if wrong survey number or wrong post body
 
-4. 
+___
+
 ### Request
 
 `GET /survey/:registrationNumber`
@@ -93,7 +101,8 @@ curl -i -H 'Content-type: application/json' http://localhost:3000/survey/:regist
 ### Description
 Used to get the result of the survey for particular registration number.
 
-5. 
+___
+
 ### Request
 
 `POST /survey/reset`
@@ -134,11 +143,7 @@ $ npm run start:prod
 - Used validations for each and every POST method body.
 - Rest Client used for testing purpose. You can also use in the main directory "test_example.http" file.
 - Used DTOs(Data Transfer Objects) for scalable and error prone system.
-## Deployement
 
-- On Heroku - [Click here to open app](https://survey-time.herokuapp.com/)
-
-- [Api Documentation with testing interface](https://survey-time.herokuapp.com/api/)
 
 <!-- ## Test
 
