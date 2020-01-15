@@ -29,14 +29,14 @@ export class SurveyController {
   @UsePipes(ArrayValidationPipe(QuestionDTO))
   @ApiBody({ type: [QuestionDTO] })
   @ApiResponse({ status: 200, description: 'You have successfully set the questions in your survey.'})
-  @ApiParam({
-    name:"4 Digit Survey Registration Number",
-    example:"2345",
-    allowEmptyValue:false,
-    description:"Survey Registration Number which provided by /survey REST Api after calling it.",
-    type:Number,
-    required:true
-  })
+  // @ApiParam({
+  //   name:"4 Digit Survey Registration Number",
+  //   example:"2345",
+  //   allowEmptyValue:false,
+  //   description:"Survey Registration Number which provided by /survey REST Api after calling it.",
+  //   type:Number,
+  //   required:true
+  // })
   setSurvey(@Body("questions") setQuestionsDto: QuestionDTO[],@Param('registrationNumber') registrationNumber:number): boolean {
       Logger.log(` POST   /survey/${registrationNumber} `,"",true);
       logger.info(` POST   /survey/${registrationNumber} `,"",true);
@@ -47,15 +47,15 @@ export class SurveyController {
   }
   @Post('/response/:registrationNumber')
   @Header('Content-type','application/json')
-  @ApiBody({ type: [ResponseDTO] })
-  @ApiParam({
-    name:"4 Digit Survey Registration Number",
-    example:"2345",
-    allowEmptyValue:false,
-    description:"Survey Registration Number which provided by /survey REST Api after calling it.",
-    type:Number,
-    required:true
-  })
+  @ApiBody({ type: {"questions":[ResponseDTO]} })
+  // @ApiParam({
+  //   name:"4 Digit Survey Registration Number",
+  //   example:"2345",
+  //   allowEmptyValue:false,
+  //   description:"Survey Registration Number which provided by /survey REST Api after calling it.",
+  //   type:Number,
+  //   required:true
+  // })
   @ApiResponse({ status: 200, description: 'You have successfully set answer for the given survey registration number.'})
   setResponse(@Body() responses: ResponseDTO,@Param('registrationNumber') registrationNumber:number): boolean | void {
     Logger.log(` POST   survey/response/${registrationNumber} `,"",true);
@@ -64,14 +64,14 @@ export class SurveyController {
   }
   @Get(':registrationNumber')
   @Header('Content-type','application/json')
-  @ApiParam({
-    name:"4 Digit Survey Registration Number",
-    example:"2345",
-    allowEmptyValue:false,
-    description:"Survey Registration Number which provided by /survey REST Api after calling it.",
-    type:Number,
-    required:true
-  })
+  // @ApiParam({
+  //   name:"4 Digit Survey Registration Number",
+  //   example:"2345",
+  //   allowEmptyValue:false,
+  //   description:"Survey Registration Number which provided by /survey REST Api after calling it.",
+  //   type:Number,
+  //   required:true
+  // })
   @ApiResponse({ status: 200, description: 'You can take the survey result from here.'})
   getSurvey(@Param('registrationNumber') registrationNumber:number): SurveyDTO {
     Logger.log(` GET   /survey/${registrationNumber} `,"",true);
