@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { RandomGenerator } from '../utilities/random_generator';
 import std = require("tstl");
 import { ResponseDTO } from '../dto/responses.dto';
-import { QuestionDTO } from 'src/dto/question.dto';
+import { QuestionDTO } from '../dto/question.dto';
 @Injectable()
 export class SurveyService {
   // surveyMap:std.HashMap<number,SurveyDTO>;
