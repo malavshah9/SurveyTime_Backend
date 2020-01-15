@@ -18,7 +18,7 @@ export class SurveyController {
   createSurvey(): string {
     let random=this.surveyService.getSurveyNumber();
     let custom_header={
-      registration:random
+      registrationNumber:random
     }
     Logger.log(" GET   /survey ","",true);
     logger.info(" GET   /survey ","",true);

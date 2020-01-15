@@ -1,38 +1,113 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
-
-[travis-image]: https://api.travis-ci.org/nestjs/nest.svg?branch=master
-[travis-url]: https://travis-ci.org/nestjs/nest
-[linux-image]: https://img.shields.io/travis/nestjs/nest/master.svg?label=linux
-[linux-url]: https://travis-ci.org/nestjs/nest
-  
-  <p align="center">A progressive <a href="http://nodejs.org" target="blank">Node.js</a> framework for building efficient and scalable server-side applications, heavily inspired by <a href="https://angular.io" target="blank">Angular</a>.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/dm/@nestjs/core.svg" alt="NPM Downloads" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://api.travis-ci.org/nestjs/nest.svg?branch=master" alt="Travis" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://img.shields.io/travis/nestjs/nest/master.svg?label=linux" alt="Linux" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#5" alt="Coverage" /></a>
-<a href="https://gitter.im/nestjs/nestjs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge"><img src="https://badges.gitter.im/nestjs/nestjs.svg" alt="Gitter" /></a>
-<a href="https://opencollective.com/nest#backer"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec"><img src="https://img.shields.io/badge/Donate-PayPal-dc3d53.svg"/></a>
-  <a href="https://twitter.com/nestframework"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+<!-- [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository. -->
+This is backend service made with Node.js using the [Nest](https://github.com/nestjs/nest) framework TypeScript.
 
 ## Installation
 
 ```bash
 $ npm install
 ```
+
+## Endpoints Defined
+
+1. 
+### Request
+
+`GET /survey/`
+
+curl -i -H 'Content-type: application/json' http://localhost:3000/survey/
+
+### Response
+
+{
+registration:"4343"
+}
+
+### Description
+Used to register for the survey. You will get the registration number.
+
+
+2. 
+### Request
+
+`POST /survey/:registrationNumber`
+
+curl -i -H 'Content-type: application/json' http://localhost:3000/survey/3453
+
+- Body should contain following kind JSON.
+
+{
+   "questions":[{"question":"Are you student?"},{"question":"Do you code daily?"}]
+}
+
+### Response
+
+true or false
+
+### Description
+Used to store the "questions" for the given survey number. Reponses true if successfully stored, false if wrong survey number or wrong post body
+
+3. 
+### Request
+
+`POST /survey/response/:registrationNumber`
+
+curl -i -H 'Content-type: application/json' http://localhost:3000/survey/response/3453
+
+- Body should contain following kind JSON.
+
+{
+   "responses":[true,false,true,true,true]
+}
+
+### Response
+
+true or false
+
+### Description
+Used to store the "answers" for the given survey number. Reponses true if successfully stored, false if wrong survey number or wrong post body
+
+4. 
+### Request
+
+`GET /survey/:registrationNumber`
+
+curl -i -H 'Content-type: application/json' http://localhost:3000/survey/:registrationNumber
+
+### Response
+
+[
+  {
+    "trueCount": 1,
+    "falseCount": 0,
+    "question": "Are you student?"
+  },
+  {
+    "trueCount": 0,
+    "falseCount": 1,
+    "question": "Do you code daily?"
+  }
+]
+
+### Description
+Used to get the result of the survey for particular registration number.
+
+5. 
+### Request
+
+`POST /survey/reset`
+
+curl -i -H 'Content-type: application/json' http://localhost:3000/survey/reset
+
+### Response
+
+true or false
+
+### Description
+Used to reset the server and empty all the surveys.
+
+
 
 ## Running the app
 
@@ -47,7 +122,25 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
+## Tools and Libraries Used
+
+- Swagger for REST Api Documentation
+
+- Winston Logger used which logs the server on two mediums 
+  1. On Console Screen
+  2. On file which exist on server
+
+- Without database used
+- Used validations for each and every POST method body.
+- Rest Client used for testing purpose. You can also use in the main directory "test_example.http" file.
+- Used DTOs(Data Transfer Objects) for scalable and error prone system.
+## Deployement
+
+- On Heroku - [Click here to open app](https://survey-time.herokuapp.com/)
+
+- [Api Documentation with testing interface](https://survey-time.herokuapp.com/api/)
+
+<!-- ## Test
 
 ```bash
 # unit tests
@@ -58,18 +151,18 @@ $ npm run test:e2e
 
 # test coverage
 $ npm run test:cov
-```
+``` -->
 
-## Support
+<!-- ## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support). -->
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Author - [Malav Shah](https://github.com/malavshah9)
+<!-- - Website - [https://nestjs.com](https://nestjs.com/) -->
+<!-- - Twitter - [@nestframework](https://twitter.com/nestframework) -->
 
-## License
+<!-- ## License
 
-  Nest is [MIT licensed](LICENSE).
+  Nest is [MIT licensed](LICENSE). -->

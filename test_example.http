@@ -6,7 +6,7 @@ GET http://localhost:3000/survey
 
 ###
 
-POST http://localhost:3000/survey/5290
+POST http://localhost:3000/survey/7085
 Content-Type: application/json
 
 {
@@ -15,11 +15,11 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/survey/5290
+GET http://localhost:3000/survey/7085
 
 ###
 
-POST http://localhost:3000/survey/response/5290
+POST http://localhost:3000/survey/response/7085
 Content-Type: application/json
 
 {

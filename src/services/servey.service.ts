@@ -66,7 +66,10 @@ export class SurveyService {
     return false;
   }
   resetSurveyServer():boolean{
-    this.surveyMap=new Map<number,QuestionDTO[]>();
-    return this.surveyMap.size>0;
+    this.surveyMap.clear();
+    if(this.surveyMap.size===0)
+    return true;
+    else
+    return false;
   }
 }
