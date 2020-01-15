@@ -1,5 +1,6 @@
 import { IsNotEmpty,ArrayUnique,IsArray,ArrayNotEmpty, IsNumber, IsOptional, IsString} from 'class-validator';
 import { isUndefined, isNumber } from 'util';
+import { ApiProperty } from '@nestjs/swagger';
 export class  QuestionDTO{
   // @IsNotEmpty()
   // @ArrayUnique()
@@ -7,6 +8,13 @@ export class  QuestionDTO{
   // @ArrayNotEmpty()
   @IsString()
   @IsNotEmpty()
+  @ApiProperty({
+    description:"Question string which you want to add to survey",
+    default:"Are you student?",
+    type: String,
+    required:true,
+    example:"Do you code daily?"
+  })
   question: string;
   @IsNumber()
   @IsOptional()

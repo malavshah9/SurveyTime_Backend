@@ -23,7 +23,6 @@ async function bootstrap() {
     .setTitle('Survey-time REST Api')
     .setDescription('The Survey-Time API description')
     .setVersion('1.0')
-    .addTag('survey')
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
