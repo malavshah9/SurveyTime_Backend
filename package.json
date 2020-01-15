@@ -28,7 +28,8 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.0",
     "rxjs": "^6.5.3",
-    "tstl": "^2.4.0"
+    "tstl": "^2.4.0",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^6.9.0",

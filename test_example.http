@@ -6,11 +6,26 @@ GET http://localhost:3000/survey
 
 ###
 
-POST http://localhost:3000/survey/9314
+POST http://localhost:3000/survey/5290
 Content-Type: application/json
 
 {
-   "kdks":"akalsd",
-   "asj":"slkdasldkl",
-   "questions":["Hello","Malav","Shah","Demo","Follow"]
+   "questions":[{"question":"Hello"},{"question":"Malav"},{"question":"Shah"},{"question":"Demo"},{"question":"Follow"}]
 }
+
+###
+
+GET http://localhost:3000/survey/5290
+
+###
+
+POST http://localhost:3000/survey/response/5290
+Content-Type: application/json
+
+{
+   "responses":[true,false,true,true,true]
+}
+
+###
+
+POST http://localhost:3000/survey/reset
